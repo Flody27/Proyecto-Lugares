@@ -15,7 +15,7 @@ class LugarViewModel(application: Application) : AndroidViewModel(application) {
 
     val getAllData: LiveData<List<Lugar>>
 
-    private val respository : LugarRepository
+    private val respository: LugarRepository
 
     init {
         val lugarDao = LugarDataBase.getDataBase(application).lugarDao()
@@ -23,16 +23,19 @@ class LugarViewModel(application: Application) : AndroidViewModel(application) {
         getAllData = respository.getAllData
     }
 
-    fun addLugar(lugar: Lugar){
-        viewModelScope.launch(Dispatchers.IO) { respository.addLugar(lugar)  }
+    fun addLugar(lugar: Lugar) {
+        viewModelScope.launch(Dispatchers.IO) {
+            respository.addLugar(lugar) }
     }
 
-    fun updateLugar(lugar: Lugar){
-        viewModelScope.launch(Dispatchers.IO) { respository.updateLugar(lugar)  }
+    fun updateLugar(lugar: Lugar) {
+        viewModelScope.launch(Dispatchers.IO) {
+            respository.updateLugar(lugar) }
     }
 
-    fun deleteLugar(lugar: Lugar){
-        viewModelScope.launch(Dispatchers.IO) { respository.deleteLugar(lugar)  }
+    fun deleteLugar(lugar: Lugar) {
+        viewModelScope.launch(Dispatchers.IO) {
+            respository.deleteLugar(lugar) }
     }
 
 }
