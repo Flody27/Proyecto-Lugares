@@ -1,41 +1,37 @@
 package com.lugares.viewModel
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
-import com.lugares.data.LugarDataBase
+import androidx.lifecycle.*
+import com.lugares.data.LugarDatabase
 import com.lugares.model.Lugar
 import com.lugares.repository.LugarRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+class LugarViewModel(application: Application) : AndroidViewModel(application)  {
 
-class LugarViewModel(application: Application) : AndroidViewModel(application) {
+    private val lugarRepository: LugarRepository
+    val getLugares: LiveData<List<Lugar>>
 
-    val getAllData: LiveData<List<Lugar>>
-
-    private val respository: LugarRepository
 
     init {
-        val lugarDao = LugarDataBase.getDataBase(application).lugarDao()
-        respository = LugarRepository(lugarDao)
-        getAllData = respository.getAllData
+
+        val lugarDao = LugarDatabase.getDatabase(application).lugarDao()
+        lugarRepository = LugarRepository(lugarDao)
+        getLugares = lugarRepository.getLugares
     }
 
-    fun addLugar(lugar: Lugar) {
+    fun saveLugar(lugar: Lugar){
         viewModelScope.launch(Dispatchers.IO) {
-            respository.addLugar(lugar) }
+            lugarRepository.saveLugar(lugar) }
     }
 
-    fun updateLugar(lugar: Lugar) {
+  fun deleteLugar(lugar: Lugar){
         viewModelScope.launch(Dispatchers.IO) {
-            respository.updateLugar(lugar) }
+            lugarRepository.deleteLugar(lugar) }
     }
 
-    fun deleteLugar(lugar: Lugar) {
-        viewModelScope.launch(Dispatchers.IO) {
-            respository.deleteLugar(lugar) }
-    }
+
+
 
 }

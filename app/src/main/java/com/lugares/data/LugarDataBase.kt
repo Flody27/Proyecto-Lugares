@@ -1,34 +1,41 @@
 package com.lugares.data
 
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import android.content.Context
 import com.lugares.model.Lugar
+import androidx.room.*
 
 @Database(entities = [Lugar::class], version = 1, exportSchema = false)
-abstract class LugarDataBase : RoomDatabase() {
 
-    abstract fun lugarDao(): LugarDao
 
-    companion object {
-        @Volatile
-        private var INSTANCE: LugarDataBase? = null
+    abstract class LugarDatabase: RoomDatabase(){
 
-        fun getDataBase(context: android.content.Context): LugarDataBase {
-            val tempInstance = INSTANCE
-            if (tempInstance != null) {
-                return tempInstance
-            }
-            synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    LugarDataBase::class.java,
-                    "lugar_database"
-                ).build()
-                INSTANCE = instance
-                return  instance
+        abstract fun lugarDao() :LugarDao
+
+        companion object {
+            @Volatile
+            private var INSTANCE: LugarDatabase? = null
+
+
+            fun getDatabase(context: Context) : LugarDatabase  {
+
+                val local = INSTANCE
+                if(local != null) {
+                    return local
+                }
+
+                synchronized(this){
+                    val instance = Room.databaseBuilder(
+                        context.applicationContext,
+                    LugarDatabase::class.java,
+                    "Lugar_Database"
+                    ).build()
+                    INSTANCE = instance
+                    return instance
+                }
+
             }
         }
+
     }
 
-}
+

@@ -5,17 +5,27 @@ import com.lugares.data.LugarDao
 import com.lugares.model.Lugar
 
 class LugarRepository(private val lugarDao: LugarDao) {
-    val getAllData:LiveData<List<Lugar>> = lugarDao.getAllData()
 
-    suspend fun addLugar(lugar: Lugar){
-        lugarDao.addLugar(lugar)
+    suspend fun saveLugar(lugar: Lugar){
+
+        if(lugar.id==0){
+
+            //Es un lugar nuevo...
+            lugarDao.addLugar(lugar)
+        }else { 
+            lugarDao.addLugar(lugar)
+        }
     }
-
-    suspend fun updateLugar(lugar: Lugar){
-        lugarDao.updateLugar(lugar)
-    }
-
     suspend fun deleteLugar(lugar: Lugar){
-        lugarDao.deleteLugar(lugar)
+        if(lugar.id==0){
+            //si el id tiene un valor lo intento eliminar
+            lugarDao.deleteLugar(lugar)
+        }
+
+
     }
+
+    val getLugares : LiveData<List<Lugar>> = lugarDao.getLugares()
+
+
 }

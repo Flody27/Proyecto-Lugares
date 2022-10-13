@@ -28,8 +28,8 @@
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/addLugarFragment"
-        android:name="com.lugares.ui.lugar.LugarFragment"
-        android:label="fragment_add_lugar"
+        android:name="com.lugares.ui.lugar.AddLugarFragment"
+        android:label="@string/bt_add_lugar"
         tools:layout="@layout/fragment_add_lugar" >
         <action
             android:id="@+id/action_addLugarFragment_to_nav_lugar"

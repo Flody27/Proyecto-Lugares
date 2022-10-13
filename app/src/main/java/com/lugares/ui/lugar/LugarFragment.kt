@@ -21,32 +21,34 @@ class LugarFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private lateinit var LugarViewModel : LugarViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        LugarViewModel = ViewModelProvider(this)[LugarViewModel::class.java]
+        val lugarViewModel =
+            ViewModelProvider(this)[LugarViewModel::class.java]
+
         _binding = FragmentLugarBinding.inflate(inflater, container, false)
-        binding.fbAgregar.setOnClickListener{
-            findNavController().navigate(R.id.action_nav_lugar_to_addLugarFragment)
+
+        binding.addLugarFabButton.setOnClickListener{
+            findNavController().navigate(R.id.action_nav_lugar_to_addLugarFragment  )
         }
 
-        //Activar el RecyclerView
-        val lugarAdapter = LugarAdapter()
-        val reciclador = binding.reciclador
+
+        //Se genera el recycler view para ver la informacion...
+        val lugarAdapter=LugarAdapter()
+        val reciclador = binding.Reciclador
         reciclador.adapter = lugarAdapter
-        reciclador.layoutManager = LinearLayoutManager(requireContext())
+        reciclador.layoutManager=LinearLayoutManager(requireContext())
 
-        LugarViewModel = ViewModelProvider(this)[LugarViewModel::class.java]
-        LugarViewModel.getAllData.observe(viewLifecycleOwner){  lugares ->
-            lugarAdapter.setData(lugares)
+        lugarViewModel.getLugares.observe(viewLifecycleOwner)
+        {
+            lugares -> lugarAdapter.setListaLugares(lugares)
         }
 
-
-        return binding.root;
+        return binding.root
     }
 
     override fun onDestroyView() {
