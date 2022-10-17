@@ -52,8 +52,7 @@ class AddLugarFragment : Fragment() {
                 //Se procede a registrar el nuevo lugar
             lugarViewModel.saveLugar(lugar)
             Toast.makeText(requireContext(),getString(R.string.msg_lugar_added),Toast.LENGTH_SHORT).show()
-
-            findNavController().navigate(R.id.action_nav_lugar_to_addLugarFragment)
+            findNavController().navigate(R.id.action_addLugarFragment_to_nav_lugar)
 
         } else
         {// No se puede registar el lugar porque falta informacion
