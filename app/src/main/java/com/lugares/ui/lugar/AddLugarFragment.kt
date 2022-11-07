@@ -48,7 +48,7 @@ class AddLugarFragment : Fragment() {
             val correo = binding.etCorreo.text.toString()
             val telefono = binding.etTelefono.text.toString()
             val web = binding.etWeb.text.toString()
-            val lugar = Lugar(0,nombre,correo,telefono,web,0.0,0.0,0.0,"","")
+            val lugar = Lugar("",nombre,correo,telefono,web,0.0,0.0,0.0,"","")
                 //Se procede a registrar el nuevo lugar
             lugarViewModel.saveLugar(lugar)
             Toast.makeText(requireContext(),getString(R.string.msg_lugar_added),Toast.LENGTH_SHORT).show()
