@@ -1,7 +1,9 @@
 package com.lugares.ui.lugar
 
+import android.Manifest
 import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -62,7 +64,17 @@ class UpdateLugarFragment : Fragment() {
     }
 
     private fun verMapa() {
-        TODO("Not yet implemented")
+        val latitud = binding.tvLatitud.text.toString().toDouble()
+        val longitud = binding.tvLongitud.text.toString().toDouble()
+
+        if(latitud.isFinite() && longitud.isFinite()){
+            val uri =  "geo:$latitud,$longitud?z18"
+            val intent = Intent(Intent.ACTION_VIEW,Uri.parse(uri))
+            startActivity(intent)
+        }else{
+            Toast.makeText(requireContext(),
+                getString(R.string.msg_data),Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun verWeb() {
@@ -93,7 +105,26 @@ class UpdateLugarFragment : Fragment() {
     }
 
     private fun llamarLugar() {
-        TODO("Not yet implemented")
+        val telefono =  binding.etTelefono.text
+        if(telefono.isNotEmpty()){
+            val intent = Intent(Intent.ACTION_CALL)
+            intent.data = Uri.parse("tel:$telefono")
+
+            if(requireActivity().checkSelfPermission(Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED ){
+                //Se entra aca si nose se poseen los permisos para realizar la llamada
+                requireActivity().requestPermissions(
+                    arrayOf(Manifest.permission.CALL_PHONE),105)
+
+            } else{
+                //Se realiza la llamad
+                requireActivity().startActivity(intent)
+            }
+
+        }else{
+            Toast.makeText(requireContext(),
+                getString(R.string.msg_data),Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun escribirCorreo() {
