@@ -55,5 +55,6 @@
     <string name="msg_subiendo_audio">Subiendo Nota Audio</string>
     <string name="msg_subiendo_imagen">Subiendo imagen</string>
     <string name="todo">todo</string>
+    <string name="msg_subiendo_lugar">subiendo lugar</string>
 
 </resources>
