@@ -1,18 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Lugares</string>
     <string name="tv_mail">Correo</string>
     <string name="tv_clave">Contraseña</string>
     <string name="title_activity_principal">Principal</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-
-    <string name="menu_lugar">Lugares</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
     <string name="msg_nombre">Nombre del lugar</string>
     <string name="msg_correo">Email (lugar@xxxx.xxx)</string>
     <string name="msg_telefono">Telefono (xxxx-xxxx)</string>
@@ -27,7 +18,6 @@
     <string name="msg_pregunta_delete">¿Esta seguro de eliminar el lugar</string>
     <string name="msg_si">si</string>
     <string name="msg_no">no</string>
-    <string name="b">Button</string>
     <string name="msg_enviar_correo">Enviar correo electrónico</string>
     <string name="msg_phone_call">Realizar llamada telefónica</string>
     <string name="msg_whatsapp_send">Enviar mensaje WhatsApp</string>
@@ -39,7 +29,6 @@
     <string name="msg_saludos">Saludos amigos</string>
     <string name="msg_mensaje_correo">Le escribo este correo para</string>
     <string name="error">Error</string>
-
     <string name="msgEscucharAudio">Escuchar nota de audio</string>
     <string name="msg_imagen">Imagen del lugar</string>
     <string name="graba_pausa">Graba o pausa grabación</string>
@@ -51,11 +40,19 @@
     <string name="rotate_l">Rota izquierda</string>
     <string name="rotale_r">Rota a la derecha</string>
     <string name="msg_graba_audio">Grabando nota de audio</string>
-    <string name="msg_detener_audio">Nota de audio detenida</string>
+    <string name="msg_detener_audio">Recording audio note</string>
     <string name="msg_subiendo_audio">Subiendo Nota Audio</string>
     <string name="msg_subiendo_imagen">Subiendo imagen</string>
-    <string name="todo">todo</string>
     <string name="msg_subiendo_lugar">subiendo lugar</string>
-    <string name="default_web_client_ID" translatable="false">1047629831887-ie19lg40s5pqmqafqlln4ba79bqg6m7h.apps.googleusercontent.com</string>
-
+    <string name="action_settings">Ajustes</string>
+    <string name="menu_lugar">Lugares</string>
+    <string name="menu_gallery">Galeria</string>
+    <string name="todo">todo</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="b">Button</string>
 </resources>

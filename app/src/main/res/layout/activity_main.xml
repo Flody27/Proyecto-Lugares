@@ -74,4 +74,11 @@
             android:contentDescription="TODO" />
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/bt_google"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+
 </LinearLayout>
